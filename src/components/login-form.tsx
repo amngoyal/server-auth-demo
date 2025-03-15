@@ -12,19 +12,26 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import axiosClient from '@/lib/axiosInstance';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const loginSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters long'),
+  email: z.string().email('Invalid email address').default('admin@example.com'),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters long')
+    .default('password'),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
+  console.log('Here');
+  const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
@@ -38,10 +45,14 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormData) => {
     setSubmitError(null);
     try {
-      // Simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log('Form submitted:', data);
-      // If login is successful, you might redirect the user or update the app state
+      const res = await axiosClient.post('/api/auth/login', {
+        email: data?.email,
+        password: data?.password,
+      });
+
+      console.log(res);
+
+      router.push('/dashboard');
     } catch (error) {
       console.log(error);
       setSubmitError('Failed to login. Please try again.');
@@ -65,6 +76,7 @@ export default function LoginForm() {
               type="email"
               placeholder="you@example.com"
               {...register('email')}
+              defaultValue={'admin@example.com'}
             />
             {errors.email && (
               <p className="text-destructive text-sm">{errors.email.message}</p>
@@ -73,7 +85,12 @@ export default function LoginForm() {
 
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" {...register('password')} />
+            <Input
+              id="password"
+              type="password"
+              {...register('password')}
+              defaultValue={'password'}
+            />
             {errors.password && (
               <p className="text-destructive text-sm">
                 {errors.password.message}
