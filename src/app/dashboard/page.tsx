@@ -21,14 +21,21 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto mt-24 max-w-4xl">
       <h1 className="mb-4 font-bold text-2xl">Dashboard</h1>
-      <p>Welcome to your dashboard! {user?.name}</p>
+
       <p>
-        Try refreshing or going back to{' '}
-        <Link className="text-blue-600 underline" href={'/login'}>
-          login
-        </Link>
-        . It will be redirected to dashboard
+        Welcome, <strong>{user?.name || 'User'}</strong>! You are successfully
+        logged in.
       </p>
+
+      <p className="mt-4">
+        If you try to visit the{' '}
+        <Link className="text-blue-600 underline" href="/login">
+          login page
+        </Link>{' '}
+        while authenticated, the server will detect your session and redirect
+        you back here.
+      </p>
+
       <Button className="mt-10" onClick={handleLogout}>
         Logout
       </Button>
