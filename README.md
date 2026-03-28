@@ -112,31 +112,3 @@ PRs and suggestions are welcome!
 ## 📄 License
 
 MIT License
-
----
-
-## 🚀 Optional Next-Level Upgrades
-
-If you want to go even more pro:
-
-### ✅ Add real banner
-
-- Upload image to `/public/banner.png`
-- Replace:
-
-```html
-<img src="/banner.png" alt="Banner" />
-```
-
-### ✅ Add repo stats badges
-
-![Stars](https://img.shields.io/github/stars/amngoyal/server-auth-demo)
-![Forks](https://img.shields.io/github/forks/amngoyal/server-auth-demo)
-
-### 🧠 Final Tip
-
-This README is now:
-
-- Portfolio-ready ✅
-- Recruiter-friendly ✅
-- Open-source quality ✅
