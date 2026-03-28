@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://via.placeholder.com/1200x400?text=Next.js+Auth+with+HttpOnly+Cookies" alt="Next.js Authentication Banner" />
-</p>
-
 # 🔐 Next.js Authentication with HttpOnly Cookies
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
@@ -107,7 +103,7 @@ Always verify JWT on the server. Decoding alone is not secure.
 
 ## 📚 Blog
 
-👉 Medium Article: Implementing Secure Server-Side Authentication in Next.js 16 with HttpOnly Cookies
+👉 Medium Article: [Implementing Secure Server-Side Authentication in Next.js 16 with HttpOnly Cookies](https://medium.com/@amngoyal/implementing-secure-server-side-authentication-in-next-js-16-with-httponly-cookies-9b64461119f4)
 
 ## 🤝 Contributing
 
